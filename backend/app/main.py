@@ -1,12 +1,15 @@
 from fastapi import FastAPI
 
 from app.database import check_mongodb_connection
+from app.students import router as students_router
 
 app = FastAPI(
     title="Student Analytics API",
     description="Backend API for the student analytics project.",
     version="0.1.0",
 )
+
+app.include_router(students_router)
 
 
 @app.get("/")
